@@ -43,7 +43,7 @@ Napi::Array Wrapper::add_get_params(const Napi::CallbackInfo &info)
 {
 
     Napi::Env env = info.Env(); // check if arguments are integer only.
-    std::array<std::string, 3> tmp{"tab_init:Int32Array", "rule_death:Number", "rule_life:Number"};
+    std::array<std::string, 3> tmp{"tab_init:Int32Array", "width:Number", "height:Number"};
     std::cout << sizeof(*tmp.data()) << '\n';
     Napi::Array return_value = Napi::Array::New(env, tmp.size());
     for (size_t i{0}; i < tmp.size(); i++)
