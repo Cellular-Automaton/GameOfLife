@@ -1,8 +1,9 @@
 name: Building
 
 on:
-  release:
-    types: [published]
+  push:
+    branches-ignore:
+      - main
 permissions:
   contents: write
 
@@ -42,11 +43,5 @@ jobs:
           directory: build/Release/
           filename: ${{matrix.name}}.zip
 
-      - name: Publish & upload artifact
-        uses: nanoufo/action-upload-artifacts-and-release-assets@v2
-        with:
-          path: |
-            **/build/Release/${{matrix.name}}.zip
-          if-no-files-found: warn
-          upload-release-files: true
-          release-upload-url: ${{github.event.release.upload_url}}
+      - name: Show results
+        run: ls ; ls build/Release -l ; true
