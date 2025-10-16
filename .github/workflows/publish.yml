@@ -16,7 +16,7 @@ jobs:
             name: Gol-linux
           - os: windows-latest
             name: Gol-Windows
-          - os: macos-latest
+          - os: macos-26
             name: Gol-Macos
 
     runs-on: ${{ matrix.os }}
