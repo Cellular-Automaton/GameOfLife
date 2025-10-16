@@ -10,13 +10,13 @@ jobs:
   release:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest/arm64]
+        os: [ubuntu-latest, windows-latest, macos-latest]
         include:
           - os: ubuntu-latest
             name: Gol-linux
           - os: windows-latest
             name: Gol-Windows
-          - os: macos-latest/arm64
+          - os: macos-latest
             name: Gol-Macos
 
     runs-on: ${{ matrix.os }}
@@ -31,7 +31,11 @@ jobs:
           node-version: "22"
 
       - name: Build addon
+        if: ${{matrix.os}} == "macos-latest"
         run: |
+          if [[ "${{ matrix.os }}" == "macos-latest" ]]; then
+            export CMAKE_OSX_ARCHITECTURES=arm64
+          fi
           npm install
         shell: bash
 
