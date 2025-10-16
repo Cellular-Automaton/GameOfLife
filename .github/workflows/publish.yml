@@ -33,12 +33,7 @@ jobs:
       - name: Build addon
         if: ${{matrix.os}} == "macos-latest"
         run: |
-          if [[ "${{ matrix.os }}" == "macos-latest" ]]; then
-            arch -arm64 npm install
-          fi
-          if [[ "${{ matrix.os }}" != "macos-latest" ]]; then
-            npm install
-          fi
+          npm install
         shell: bash
 
       - name: Compress File
