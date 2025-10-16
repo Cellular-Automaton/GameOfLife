@@ -46,7 +46,3 @@ if (MSVC)
   execute_process(COMMAND ${CMAKE_AR} /def:${CMAKE_JS_NODELIB_DEF} /out:${CMAKE_JS_NODELIB_TARGET}
 ${CMAKE_STATIC_LINKER_FLAGS})
 endif()
-
-if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
-    set(CMAKE_OSX_ARCHITECTURES "arm64")
-endif()

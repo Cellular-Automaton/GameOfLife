@@ -10,13 +10,13 @@ jobs:
   release:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-14]
+        os: [ubuntu-latest, windows-latest, macos-latest/arm64]
         include:
           - os: ubuntu-latest
             name: Gol-linux
           - os: windows-latest
             name: Gol-Windows
-          - os: macos-14
+          - os: macos-latest/arm64
             name: Gol-Macos
 
     runs-on: ${{ matrix.os }}
