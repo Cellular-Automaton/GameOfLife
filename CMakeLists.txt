@@ -14,8 +14,6 @@ include_directories(include/)
 
 #set_property(TARGET lenia PROPERTY IMPORTED_LOCATION "./libs/cami-core")
 
-
-
 add_library(${PROJECT_NAME} SHARED
     src/Plugin/GameOfLife.cpp
     src/init.cpp
@@ -25,7 +23,7 @@ add_library(${PROJECT_NAME} SHARED
 )
 
 if (WIN32)
-    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "/DELAYLOAD:node.exe")
+  set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "/DELAYLOAD:node.exe")
 endif()
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
@@ -33,7 +31,7 @@ target_link_libraries(${PROJECT_NAME} ${CMAKE_JS_LIB})
 execute_process(COMMAND node -p "require('node-addon-api').include"
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
         OUTPUT_VARIABLE NODE_ADDON_API_DIR
-        )
+)
 string(REPLACE "\n" "" NODE_ADDON_API_DIR ${NODE_ADDON_API_DIR})
 string(REPLACE "\"" "" NODE_ADDON_API_DIR ${NODE_ADDON_API_DIR})
 target_include_directories(${PROJECT_NAME} PRIVATE ${NODE_ADDON_API_DIR})
@@ -45,7 +43,7 @@ target_include_directories(${PROJECT_NAME}
 add_definitions(-DNAPI_VERSION=4)
 
 if (MSVC)
-    execute_process(COMMAND ${CMAKE_AR} /def:${CMAKE_JS_NODELIB_DEF} /out:${CMAKE_JS_NODELIB_TARGET}
+  execute_process(COMMAND ${CMAKE_AR} /def:${CMAKE_JS_NODELIB_DEF} /out:${CMAKE_JS_NODELIB_TARGET}
 ${CMAKE_STATIC_LINKER_FLAGS})
 endif()
 

@@ -6,17 +6,18 @@ on:
 permissions:
   contents: write
 
-
 jobs:
   release:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
         include:
           - os: ubuntu-latest
             name: Gol-linux
           - os: windows-latest
             name: Gol-Windows
+          - os: macos-latest
+            name: Gol-Macos
 
     runs-on: ${{ matrix.os }}
 
@@ -27,7 +28,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: "22"
 
       - name: Build addon
         run: |
@@ -49,6 +50,3 @@ jobs:
           if-no-files-found: warn
           upload-release-files: true
           release-upload-url: ${{github.event.release.upload_url}}
-
-
-
