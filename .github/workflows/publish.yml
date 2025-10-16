@@ -31,7 +31,6 @@ jobs:
           node-version: "22"
 
       - name: Build addon
-        if: ${{matrix.os}} == "macos-latest"
         run: |
           npm install
         shell: bash
