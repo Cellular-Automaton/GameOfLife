@@ -32,9 +32,6 @@ jobs:
 
       - name: Build addon
         run: |
-          if [[ "${{ matrix.os }}" == "macos-latest" ]]; then
-            export CMAKE_JS_BUILD_ARGS="-DCMAKE_OSX_ARCHITECTURES=arm64"
-          fi
           npm install
         shell: bash
 

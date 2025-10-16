@@ -24,7 +24,6 @@
   },
   "cmake-js": {
     "runtime": "node",
-    "runtimeVersion": "22.18.0",
-    "arch": "x64"
+    "runtimeVersion": "22.18.0"
   }
 }
